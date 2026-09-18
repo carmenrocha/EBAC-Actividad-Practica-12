@@ -1,0 +1,316 @@
+// =============================================================
+// _layout.scss
+// Estructura general de la página: encabezado, navegación,
+// banner, contenedores de sección, carrito lateral y pie.
+// =============================================================
+
+@use "variables" as v;
+@use "functions" as f;
+@use "mixins" as m;
+
+// =============================================================
+// BLOQUE: encabezado
+// =============================================================
+.encabezado {
+  width: 100%;
+  padding: v.$space-4 v.$space-5;
+  background-color: v.$color-primary;
+  @include m.flex-center(row, v.$space-4);
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: v.$z-header;
+  box-shadow: v.$shadow-sm;
+
+  @include m.respond-to(lg) {
+    padding: v.$space-4 v.$space-7;
+  }
+}
+
+.encabezado__logo {
+  width: 70px;
+  height: auto;
+  cursor: pointer;
+
+  @include m.respond-to(md) {
+    width: 90px;
+  }
+}
+
+.encabezado__acciones {
+  @include m.flex-center(row, v.$space-4);
+}
+
+.encabezado__icono {
+  width: 26px;
+  cursor: pointer;
+  display: inline-block;
+  filter: brightness(0) invert(1); // asegura contraste sobre el rosa oscuro
+
+  img {
+    width: 100%;
+  }
+
+  @include m.respond-to(md) {
+    width: 30px;
+  }
+}
+
+// =============================================================
+// BLOQUE: navegacion
+// =============================================================
+.navegacion {
+  width: 100%;
+  background-color: v.$color-primary-dark;
+  padding-inline: v.$space-4;
+  overflow-x: auto;
+  position: sticky;
+  top: 0; // queda justo debajo del header sticky en pantallas pequeñas
+  z-index: calc(#{v.$z-header} - 1);
+
+  @include m.respond-to(lg) {
+    padding-inline: v.$space-7;
+  }
+}
+
+.navegacion__lista {
+  list-style: none;
+  display: flex;
+  gap: 0;
+  width: max-content;
+  min-width: 100%;
+
+  @include m.respond-to(md) {
+    width: auto;
+  }
+}
+
+.navegacion__elemento {
+  display: inline-block;
+}
+
+.navegacion__enlace {
+  display: block;
+  padding: v.$space-3 v.$space-4;
+  color: rgba(v.$color-text-inverse, 0.85); // antes 0.8 — leve mejora de contraste
+  text-decoration: none;
+  font-family: v.$font-body;
+  font-size: f.rem(13px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: v.$transition-base;
+
+  &:hover {
+    color: v.$color-text-inverse;
+    background-color: rgba(v.$color-text-inverse, 0.12);
+  }
+}
+
+.navegacion__enlace--activo {
+  color: v.$color-text-inverse;
+  border-bottom: 2px solid v.$color-accent;
+}
+
+// =============================================================
+// BLOQUE: banner
+// =============================================================
+.banner {
+  width: 100%;
+  padding: v.$space-7 v.$space-4;
+  text-align: center;
+  background-image:
+    linear-gradient(180deg, rgba(#1c0410, 0.45), rgba(#1c0410, 0.55)),
+    url("../img/erebus-banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 60%;
+  color: v.$color-text-inverse; // el degradado oscuro garantiza contraste AA
+
+  @include m.respond-to(md) {
+    padding: v.$space-8 v.$space-5;
+  }
+}
+
+.banner__titulo {
+  width: 100%;
+  font-weight: 600;
+  font-size: f.rem(26px);
+  margin: v.$space-3 0;
+
+  @include m.respond-to(md) {
+    font-size: f.rem(34px);
+  }
+}
+
+.banner__descripcion {
+  max-width: 420px;
+  margin: 0 auto;
+  font-size: f.rem(18px);
+  opacity: 0.9;
+
+  @include m.respond-to(md) {
+    font-size: f.rem(22px);
+  }
+}
+
+// =============================================================
+// Contenedores de sección genéricos (destacados, novedades,
+// catálogo, nosotros) — mismo patrón "ancho + centrado + gap"
+// que antes se repetía a mano en cada bloque.
+// =============================================================
+.destacados,
+.novedades,
+.nosotros {
+  @include m.container($max: 1100px, $padding: v.$space-4);
+  margin-block: v.$space-7;
+
+  @include m.respond-to(xl) {
+    max-width: 1180px;
+  }
+}
+
+.destacados,
+.nosotros {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-6;
+}
+
+.catalogo {
+  @include m.container($max: 1200px, $padding: v.$space-4);
+  padding-block: v.$space-6;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-5;
+
+  @include m.respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// =============================================================
+// BLOQUE: carrito — panel lateral
+// =============================================================
+.carrito {
+  width: 100%;
+  background-color: v.$color-surface;
+  padding: v.$space-5;
+  box-sizing: border-box;
+  box-shadow: v.$shadow-md;
+  border-top: 2px solid v.$color-primary-light;
+
+  @include m.respond-to(lg) {
+    width: 340px;
+    height: calc(100vh - 140px);
+    position: fixed;
+    right: 0;
+    top: 140px;
+    border-top: none;
+    border-radius: v.$radius-md 0 0 v.$radius-md;
+    z-index: v.$z-cart;
+    overflow-y: auto;
+  }
+}
+
+.carrito__titulo {
+  width: 100%;
+  text-align: center;
+  font-size: f.rem(20px);
+  font-weight: 600;
+  padding-block: v.$space-4;
+}
+
+.carrito__articulo {
+  border-bottom: 1px solid v.$color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: v.$space-3;
+  padding: v.$space-3;
+}
+
+.carrito__imagen {
+  width: 48px;
+}
+
+.carrito__nombre {
+  font-weight: 500;
+}
+
+.carrito__precio {
+  font-weight: 300;
+  color: v.$color-text-muted;
+}
+
+.carrito__eliminar {
+  width: 20px;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+  }
+}
+
+// =============================================================
+// BLOQUE: frase-inspiracional
+// =============================================================
+.frase-inspiracional {
+  width: 100%;
+  padding: v.$space-6 v.$space-4;
+  background-color: v.$color-bg-alt;
+  text-align: center;
+}
+
+.frase-inspiracional__texto {
+  font-family: v.$font-heading;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  font-weight: 400;
+  color: v.$color-text;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+// =============================================================
+// BLOQUE: pie-pagina
+// =============================================================
+.pie-pagina {
+  padding: v.$space-5 v.$space-4;
+  background-color: v.$color-primary;
+  text-align: center;
+}
+
+.pie-pagina__navegacion {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: v.$space-2 v.$space-5;
+  margin-bottom: v.$space-4;
+}
+
+.pie-pagina__enlace {
+  color: rgba(v.$color-text-inverse, 0.85);
+  text-decoration: none;
+  font-family: v.$font-body;
+  font-size: f.rem(13px);
+  font-weight: 400;
+  transition: v.$transition-base;
+
+  &:hover {
+    color: v.$color-text-inverse;
+    text-decoration: underline;
+  }
+}
+
+.pie-pagina__creditos {
+  font-family: v.$font-body;
+  font-size: f.rem(12px);
+  color: rgba(v.$color-text-inverse, 0.75); // antes 0.6 — mejora contraste sobre rosa oscuro
+  margin: 0;
+}

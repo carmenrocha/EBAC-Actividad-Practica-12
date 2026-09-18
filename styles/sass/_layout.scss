@@ -1,0 +1,278 @@
+// =============================================================
+// _layout.scss
+// Estructura general de la página: encabezado, navegación,
+// banner, contenedores de sección, carrito lateral y pie.
+// =============================================================
+
+@use "variables" as v;
+@use "functions" as f;
+@use "mixins" as m;
+
+// =============================================================
+// BLOQUE: navbar (Bootstrap navbar restyleado con colores de marca)
+// Markup: <nav class="navbar navbar-expand-lg navbar-dark navbar-erebus">
+// Se apoya en `.navbar-dark` de Bootstrap para el contraste de texto
+// e icono del toggler — solo se sobreescribe color de marca y detalles.
+// =============================================================
+.navbar-erebus {
+  background-color: v.$color-primary;
+  box-shadow: v.$shadow-sm;
+  padding-block: v.$space-3;
+
+  @include m.respond-to(lg) {
+    padding-block: v.$space-2;
+  }
+}
+
+.navbar-erebus__logo {
+  height: 42px;
+  width: auto;
+
+  @include m.respond-to(md) {
+    height: 50px;
+  }
+}
+
+.navbar-erebus .nav-link {
+  font-family: v.$font-body;
+  font-size: f.rem(13px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding-block: v.$space-2;
+  margin-inline: v.$space-1;
+  border-bottom: 2px solid transparent;
+  transition: v.$transition-base;
+
+  &:hover {
+    color: v.$color-text-inverse;
+  }
+
+  &.active {
+    color: v.$color-text-inverse;
+    border-bottom-color: v.$color-accent;
+  }
+}
+
+.navbar-erebus .navbar-toggler {
+  border-color: rgba(v.$color-text-inverse, 0.4);
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(v.$color-accent, 0.5);
+  }
+}
+
+// Botón de carrito dentro del navbar — icono simple, sin panel aparte
+.navbar-erebus__carrito {
+  width: 40px;
+  height: 40px;
+  border-radius: v.$radius-pill;
+  @include m.flex-center;
+  background-color: rgba(v.$color-text-inverse, 0.12);
+  transition: v.$transition-base;
+
+  img {
+    width: 18px;
+    filter: brightness(0) invert(1);
+  }
+
+  &:hover {
+    background-color: rgba(v.$color-text-inverse, 0.22);
+  }
+}
+
+// =============================================================
+// BLOQUE: carousel (hero de inicio — Bootstrap Carousel restyleado)
+// =============================================================
+.carousel-erebus {
+  .carousel-item {
+    height: 55vh;
+    min-height: 320px;
+    max-height: 560px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.65); // asegura contraste del texto sobre la foto
+    }
+  }
+
+  .carousel-caption {
+    bottom: 50%;
+    transform: translateY(50%);
+
+    h2 {
+      font-family: v.$font-heading;
+      font-size: f.rem(28px);
+      font-weight: 600;
+      color: v.$color-text-inverse;
+
+      @include m.respond-to(md) {
+        font-size: f.rem(40px);
+      }
+    }
+
+    p {
+      font-family: v.$font-body;
+      font-size: f.rem(16px);
+      max-width: 480px;
+      margin-inline: auto;
+
+      @include m.respond-to(md) {
+        font-size: f.rem(18px);
+      }
+    }
+  }
+
+  .carousel-indicators [data-bs-target] {
+    background-color: v.$color-accent;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: rgba(v.$color-text-inverse, 0.25);
+    border-radius: v.$radius-pill;
+    padding: v.$space-4;
+    background-size: 55%;
+  }
+}
+
+// =============================================================
+// BLOQUE: banner
+// =============================================================
+.banner {
+  width: 100%;
+  padding: v.$space-7 v.$space-4;
+  text-align: center;
+  background-image:
+    linear-gradient(180deg, rgba(#1c0410, 0.45), rgba(#1c0410, 0.55)),
+    url("../img/erebus-banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 60%;
+  color: v.$color-text-inverse; // el degradado oscuro garantiza contraste AA
+
+  @include m.respond-to(md) {
+    padding: v.$space-8 v.$space-5;
+  }
+}
+
+.banner__titulo {
+  width: 100%;
+  font-weight: 600;
+  font-size: f.rem(26px);
+  margin: v.$space-3 0;
+
+  @include m.respond-to(md) {
+    font-size: f.rem(34px);
+  }
+}
+
+.banner__descripcion {
+  max-width: 420px;
+  margin: 0 auto;
+  font-size: f.rem(18px);
+  opacity: 0.9;
+
+  @include m.respond-to(md) {
+    font-size: f.rem(22px);
+  }
+}
+
+// =============================================================
+// Contenedores de sección genéricos (destacados, novedades,
+// catálogo, nosotros) — mismo patrón "ancho + centrado + gap"
+// que antes se repetía a mano en cada bloque.
+// =============================================================
+.destacados,
+.novedades,
+.nosotros {
+  @include m.container($max: 1100px, $padding: v.$space-4);
+  margin-block: v.$space-7;
+
+  @include m.respond-to(xl) {
+    max-width: 1180px;
+  }
+}
+
+.destacados,
+.nosotros {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-6;
+}
+
+.catalogo {
+  @include m.container($max: 1200px, $padding: v.$space-4);
+  padding-block: v.$space-6;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-5;
+
+  @include m.respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// =============================================================
+// BLOQUE: frase-inspiracional
+// =============================================================
+.frase-inspiracional {
+  width: 100%;
+  padding: v.$space-6 v.$space-4;
+  background-color: v.$color-bg-alt;
+  text-align: center;
+}
+
+.frase-inspiracional__texto {
+  font-family: v.$font-heading;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  font-weight: 400;
+  color: v.$color-text;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+// =============================================================
+// BLOQUE: pie-pagina
+// =============================================================
+.pie-pagina {
+  padding: v.$space-5 v.$space-4;
+  background-color: v.$color-primary;
+  text-align: center;
+}
+
+.pie-pagina__navegacion {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: v.$space-2 v.$space-5;
+  margin-bottom: v.$space-4;
+}
+
+.pie-pagina__enlace {
+  color: rgba(v.$color-text-inverse, 0.85);
+  text-decoration: none;
+  font-family: v.$font-body;
+  font-size: f.rem(13px);
+  font-weight: 400;
+  transition: v.$transition-base;
+
+  &:hover {
+    color: v.$color-text-inverse;
+    text-decoration: underline;
+  }
+}
+
+.pie-pagina__creditos {
+  font-family: v.$font-body;
+  font-size: f.rem(12px);
+  color: rgba(v.$color-text-inverse, 0.75); // antes 0.6 — mejora contraste sobre rosa oscuro
+  margin: 0;
+}
