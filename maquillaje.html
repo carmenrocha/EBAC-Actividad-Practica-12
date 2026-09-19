@@ -12,10 +12,11 @@
 </head>
 <body>
 
+    <!-- ===== BLOQUE: navbar (Bootstrap) ===== -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-erebus sticky-top">
         <div class="container-fluid px-4 px-lg-5">
             <a class="navbar-brand" href="index.html">
-                <img src="img/erebus-logo.svg" alt="Logo Erebus" class="navbar-erebus__logo">
+                <img src="img/erebus-logo.png" alt="Logo Erebus" class="navbar-erebus__logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navErebus" aria-controls="navErebus" aria-expanded="false" aria-label="Abrir menú">
                 <span class="navbar-toggler-icon"></span>
@@ -41,6 +42,14 @@
                         <a class="nav-link" href="contacto.html">Contacto</a>
                     </li>
                 </ul>
+                <form class="navbar-erebus__buscador d-flex" role="search">
+                    <input class="form-control" type="search" name="buscar" placeholder="Buscar productos..." aria-label="Buscar productos">
+                    <button class="btn" type="submit" aria-label="Buscar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </form>
                 <a class="navbar-erebus__carrito" href="#" aria-label="Ver carrito">
                     <img src="img/shopping-cart.svg" alt="">
                 </a>
