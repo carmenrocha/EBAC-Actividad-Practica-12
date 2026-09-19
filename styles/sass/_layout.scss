@@ -208,13 +208,12 @@
   width: 100%;
   padding: v.$space-7 v.$space-4;
   text-align: center;
-  background-image:
-    linear-gradient(180deg, rgba(#1c0410, 0.45), rgba(#1c0410, 0.55)),
-    url("../img/erebus-banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 60%;
-  color: v.$color-text-inverse; // el degradado oscuro garantiza contraste AA
+  background-image: linear-gradient(
+    135deg,
+    v.$color-primary 0%,
+    v.$color-primary-dark 100%
+  );
+  color: v.$color-text-inverse;
 
   @include m.respond-to(md) {
     padding: v.$space-8 v.$space-5;
