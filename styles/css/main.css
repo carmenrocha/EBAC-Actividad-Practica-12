@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #BA2849;
+  color: #ba2849;
   text-decoration: none;
 }
 
@@ -65,7 +65,7 @@ button {
 }
 
 .navbar-erebus {
-  background-color: #BA2849;
+  background-color: #ba2849;
   box-shadow: 0 2px 8px rgba(61, 15, 29, 0.08);
   padding-block: 0.75rem;
 }
@@ -76,12 +76,13 @@ button {
 }
 
 .navbar-erebus__logo {
-  height: 42px;
+  height: 56px;
   width: auto;
+  max-width: 220px;
 }
 @media (min-width: 768px) {
   .navbar-erebus__logo {
-    height: 50px;
+    height: 68px;
   }
 }
 
@@ -128,6 +129,51 @@ button {
 }
 .navbar-erebus__carrito:hover {
   background-color: rgba(255, 255, 255, 0.22);
+}
+
+.navbar-erebus__buscador {
+  width: 100%;
+  margin-block: 0.75rem;
+}
+@media (min-width: 992px) {
+  .navbar-erebus__buscador {
+    width: auto;
+    margin-block: 0;
+    margin-inline: 1rem;
+  }
+}
+.navbar-erebus__buscador .form-control {
+  border: none;
+  border-radius: 999px 0 0 999px;
+  padding-inline: 1rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #241318;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+}
+.navbar-erebus__buscador .form-control::placeholder {
+  color: #6b4b55;
+}
+.navbar-erebus__buscador .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(185, 138, 62, 0.45);
+  background-color: #ffffff;
+}
+.navbar-erebus__buscador .btn {
+  border: none;
+  border-radius: 0 999px 999px 0;
+  background-color: #b98a3e;
+  color: #241318;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+.navbar-erebus__buscador .btn:hover {
+  background-color: #8f6a2c;
+}
+.navbar-erebus__buscador .btn:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: -3px;
 }
 
 .carousel-erebus .carousel-item {
@@ -284,7 +330,7 @@ button {
 
 .pie-pagina {
   padding: 1.5rem 1rem;
-  background-color: #BA2849;
+  background-color: #ba2849;
   text-align: center;
 }
 
@@ -354,7 +400,7 @@ button {
 
 .destacados__titulo {
   font-size: 1.5rem;
-  color: #BA2849;
+  color: #ba2849;
 }
 @media (min-width: 768px) {
   .destacados__titulo {
@@ -371,7 +417,7 @@ button {
 .destacados__boton {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #BA2849;
+  background-color: #ba2849;
   color: #ffffff;
   text-decoration: none;
   border: none;
@@ -400,7 +446,7 @@ button {
 
 .novedades__titulo {
   font-size: 1.625rem;
-  color: #BA2849;
+  color: #ba2849;
   text-align: center;
   margin-bottom: 0.5rem;
 }
@@ -474,7 +520,7 @@ button {
   border-radius: 999px;
 }
 .novedades__tarjeta--oferta .novedades__precio {
-  color: #BA2849;
+  color: #ba2849;
   font-weight: 700;
 }
 
@@ -504,7 +550,7 @@ button {
 .novedades__boton {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #BA2849;
+  background-color: #ba2849;
   color: #ffffff;
   text-decoration: none;
   border: none;
@@ -573,7 +619,7 @@ button {
   border-radius: 999px;
 }
 .catalogo__tarjeta--oferta .catalogo__precio {
-  color: #BA2849;
+  color: #ba2849;
   font-weight: 700;
 }
 
@@ -635,7 +681,7 @@ button {
 
 .nosotros__titulo {
   font-size: 1.5rem;
-  color: #BA2849;
+  color: #ba2849;
 }
 @media (min-width: 768px) {
   .nosotros__titulo {
@@ -671,7 +717,7 @@ button {
 
 .formulario-contacto__titulo {
   font-size: 1.625rem;
-  color: #BA2849;
+  color: #ba2849;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -707,11 +753,11 @@ button {
   transition: all 0.25s ease;
 }
 .formulario-contacto__campo:hover {
-  border-color: #BA2849;
+  border-color: #ba2849;
 }
 .formulario-contacto__campo:focus-visible {
   outline: none;
-  border-color: #BA2849;
+  border-color: #ba2849;
   box-shadow: 0 0 0 4px rgba(186, 40, 73, 0.15);
 }
 
@@ -723,7 +769,7 @@ button {
 .formulario-contacto__enviar {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #BA2849;
+  background-color: #ba2849;
   color: #ffffff;
   text-decoration: none;
   border: none;
