@@ -12,6 +12,7 @@
 </head>
 <body>
 
+    <!-- ===== BLOQUE: navbar (Bootstrap) ===== -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-erebus sticky-top">
         <div class="container-fluid px-4 px-lg-5">
             <a class="navbar-brand" href="index.html">
@@ -41,6 +42,14 @@
                         <a class="nav-link" href="contacto.html">Contacto</a>
                     </li>
                 </ul>
+                <form class="navbar-erebus__buscador d-flex" role="search">
+                    <input class="form-control" type="search" name="buscar" placeholder="Buscar productos..." aria-label="Buscar productos">
+                    <button class="btn" type="submit" aria-label="Buscar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </form>
                 <a class="navbar-erebus__carrito" href="#" aria-label="Ver carrito">
                     <img src="img/shopping-cart.svg" alt="">
                 </a>
@@ -50,6 +59,7 @@
 
     <main>
 
+        <!-- ===== BLOQUE: carousel (hero, Bootstrap Carousel) ===== -->
         <div id="carouselErebus" class="carousel slide carousel-fade carousel-erebus" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselErebus" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -58,21 +68,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/Banner1.jpg" class="d-block w-100 img-fluid" alt="Innovación Erebus">
+                    <img src="img/index1.jpg" class="d-block w-100 img-fluid" alt="Innovación Erebus">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>Bienvenida a Erebus Cosmetics</h2>
                         <p>Tu aliado mayorista en maquillaje y belleza</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/Banner2.jpg" class="d-block w-100 img-fluid" alt="Maquillaje Erebus">
+                    <img src="img/index2.jpg" class="d-block w-100 img-fluid" alt="Maquillaje Erebus">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>Maquillaje que resalta tu esencia</h2>
                         <p>Las mejores marcas del país, al mejor precio mayorista</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/Banner3.jpg" class="d-block w-100 img-fluid" alt="Regalos Erebus">
+                    <img src="img/index3.jpg" class="d-block w-100 img-fluid" alt="Regalos Erebus">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>Regalos para enamorar</h2>
                         <p>Combos perfectos para cada ocasión especial</p>
@@ -89,9 +99,11 @@
             </button>
         </div>
 
-
+        <!-- ===== BLOQUE: destacados =====
+             3 secciones en grid 2 columnas: imagen + texto -->
         <section class="destacados">
 
+            <!-- ELEMENTO: destacados__item — Innovación -->
             <article class="destacados__item">
                 <img class="destacados__imagen img-fluid" src="img/index1.jpg" alt="Innovación Erebus">
                 <div class="destacados__contenido">
@@ -104,6 +116,7 @@
                 </div>
             </article>
 
+            <!-- ELEMENTO: destacados__item — Maquillaje -->
             <article class="destacados__item">
                 <div class="destacados__contenido">
                     <h2 class="destacados__titulo">Maquillaje en Erebus</h2>
@@ -117,6 +130,7 @@
                 <img class="destacados__imagen img-fluid" src="img/index2.jpg" alt="Maquillaje Erebus">
             </article>
 
+            <!-- ELEMENTO: destacados__item — Regalos -->
             <article class="destacados__item">
                 <img class="destacados__imagen img-fluid" src="img/index3.jpg" alt="Regalos Erebus">
                 <div class="destacados__contenido">
@@ -129,6 +143,7 @@
                 </div>
             </article>
 
+            <!-- ELEMENTO: destacados__item — Cuidado Facial -->
             <article class="destacados__item">
                 <div class="destacados__contenido">
                     <h2 class="destacados__titulo">Cuidado Facial</h2>
@@ -144,12 +159,14 @@
 
         </section>
 
+        <!-- ===== BLOQUE: novedades ===== -->
         <section class="novedades">
             <h2 class="novedades__titulo">Nuestro contenido más reciente</h2>
             <p class="novedades__subtitulo">Conoce las novedades que tenemos para ti</p>
 
             <div class="novedades__grid">
 
+                <!-- ELEMENTO: novedades__tarjeta -->
                 <article class="novedades__tarjeta">
                     <img class="novedades__imagen img-fluid" src="img/producto 1.png" alt="Iluminador The Sun">
                     <h3 class="novedades__nombre">Iluminador Líquido The Sun</h3>
@@ -164,6 +181,7 @@
                     <a class="novedades__boton" href="maquillaje.html">Ver más</a>
                 </article>
 
+                <!-- MODIFICADOR: novedades__tarjeta--oferta — precio especial -->
                 <article class="novedades__tarjeta novedades__tarjeta--oferta">
                     <img class="novedades__imagen img-fluid" src="img/producto 3.png" alt="Iluminador Brilla">
                     <h3 class="novedades__nombre">Iluminador Líquido Brilla</h3>
@@ -182,10 +200,12 @@
         </section>
     </main>
 
+    <!-- ===== BLOQUE: frase-inspiracional ===== -->
     <section class="frase-inspiracional">
         <p class="frase-inspiracional__texto">Siempre hay un maquillaje perfecto para cada persona</p>
     </section>
 
+    <!-- ===== BLOQUE: pie-pagina ===== -->
     <footer class="pie-pagina">
         <p class="pie-pagina__creditos">&copy; 2026 Erebus Cosmetics — Todos los derechos reservados</p>
     </footer>

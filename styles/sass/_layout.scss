@@ -25,11 +25,12 @@
 }
 
 .navbar-erebus__logo {
-  height: 42px;
+  height: 72px;
   width: auto;
+  max-width: 260px;
 
   @include m.respond-to(md) {
-    height: 50px;
+    height: 88px;
   }
 }
 
@@ -81,20 +82,82 @@
   }
 }
 
+// Formulario de búsqueda del navbar
+.navbar-erebus__buscador {
+  width: 100%;
+  margin-block: v.$space-3;
+
+  @include m.respond-to(lg) {
+    width: auto;
+    margin-block: 0;
+    margin-inline: v.$space-4;
+  }
+
+  .form-control {
+    border: none;
+    border-radius: v.$radius-pill 0 0 v.$radius-pill;
+    padding-inline: v.$space-4;
+    background-color: rgba(v.$color-text-inverse, 0.92);
+    color: v.$color-text;
+    font-family: v.$font-body;
+    font-size: f.rem(14px);
+
+    &::placeholder {
+      color: v.$color-text-muted;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(v.$color-accent, 0.45);
+      background-color: v.$color-text-inverse;
+    }
+  }
+
+  .btn {
+    border: none;
+    border-radius: 0 v.$radius-pill v.$radius-pill 0;
+    background-color: v.$color-accent;
+    color: f.contrast-text(v.$color-accent);
+    padding-inline: v.$space-4;
+    display: flex;
+    align-items: center;
+    transition: v.$transition-base;
+
+    &:hover {
+      background-color: v.$color-accent-dark;
+    }
+
+    &:focus-visible {
+      outline: 3px solid v.$color-text-inverse;
+      outline-offset: -3px;
+    }
+  }
+}
+
 // =============================================================
 // BLOQUE: carousel (hero de inicio — Bootstrap Carousel restyleado)
 // =============================================================
 .carousel-erebus {
   .carousel-item {
-    height: 55vh;
-    min-height: 320px;
-    max-height: 560px;
+    height: 65vh;
+    min-height: 400px;
+    max-height: 640px;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 30%;
       filter: brightness(0.65); // asegura contraste del texto sobre la foto
+    }
+
+    &:nth-child(1) img {
+      object-position: center 25%;
+    }
+    &:nth-child(2) img {
+      object-position: center 35%;
+    }
+    &:nth-child(3) img {
+      object-position: center 30%;
     }
   }
 
@@ -145,13 +208,12 @@
   width: 100%;
   padding: v.$space-7 v.$space-4;
   text-align: center;
-  background-image:
-    linear-gradient(180deg, rgba(#1c0410, 0.45), rgba(#1c0410, 0.55)),
-    url("../img/erebus-banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 60%;
-  color: v.$color-text-inverse; // el degradado oscuro garantiza contraste AA
+  background-image: linear-gradient(
+    135deg,
+    v.$color-primary 0%,
+    v.$color-primary-dark 100%
+  );
+  color: v.$color-text-inverse;
 
   @include m.respond-to(md) {
     padding: v.$space-8 v.$space-5;
